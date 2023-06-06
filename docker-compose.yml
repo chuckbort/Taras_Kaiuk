@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  cli:
+    container_name: mvn-cli
+    image: mvn:1.0.0
+    build:
+      context: ./docker/mvn
+      dockerfile: Dockerfile
+      target: cli
+    volumes:
+      - ./:/app
+
+  compiler:
+    container_name: mvn-compiler
+    image: mvn-compiler:1.0.0
+    build:
+      context: ./docker/mvn
+      dockerfile: Dockerfile
+      target: compiler
+    volumes:
+      - ./:/app
